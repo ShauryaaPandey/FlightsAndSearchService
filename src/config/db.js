@@ -1,0 +1,1 @@
+//thi is db config setup

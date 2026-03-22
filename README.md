@@ -1,27 +1,22 @@
-/ rolebased
-  - this src/app same 
-  - src/
-     index.js //server
-     models
-     controllers
-     middlewares
-     services
-     utils
-     config
-     repository
-  - tests/[later]
-  - static
-  - temp
+# Welcome to Flights Service
 
-anything that we dont want to expose is put inside .gitignore(which is put outside the src folder) 
+## Project Setup
+  - clone the project on your local 
+  - Execute `npm install` on the same path as your root directory of the downloaded project
+  - Create a `.env` file in the root directory and add the following environment variable 
+       - `PORT=3000`
 
-//changes done 
+  - Inside the `src/config` folder , create a new file `config.json` and then add the following code :
+   
+   ```
+         {
+      "development": {
+         "username": <YOUR_NAME>,
+         "password": <YOUR_PASSWORD>,
+         "database": "Flights_Search_DB_DEV",
+         "host": "127.0.0.1",
+         "dialect": "mysql"
+      }
+      }
 
-
-/ feature based
-   -flights
-      /models
-      /controller
-   -search
-       /models
-       /controllers    
+   ```

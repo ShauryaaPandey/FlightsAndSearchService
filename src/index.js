@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 //is trh kisi dusre self made ko accessing 
 const {PORT} = require('./config/serverConfig');
 
+const CityRepo = require("./repository/city-repo");
+
 const setupAndStartServer = async()=>{
 
     //create the express object
@@ -18,7 +20,8 @@ const setupAndStartServer = async()=>{
     //starting the app
     app.listen(3000,()=>{
          console.log(`Server started at ${PORT}`);
-        
+        const repo = new CityRepo();
+        repo.createCity({name : "Kolkata"});
     });
 }
 

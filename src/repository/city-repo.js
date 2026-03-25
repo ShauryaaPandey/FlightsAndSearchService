@@ -34,6 +34,8 @@ class CityRepo {
         //data will be key value pair 
         //what we want to update and with which value 
   async updateCity(cityid , data) {
+    //eg want to change name from a to b
+    // data == {name : "b"}
      try {
        const city = await City.update(data,{
         where: {

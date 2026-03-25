@@ -6,7 +6,9 @@ const { City } = require('../models/index');
 //it is having db.city
 
 
-
+//this Cityrepo object created everytime whenever we want apply CRUD 
+//so this way we wasting space
+//better wayy find out ??????????????
 class CityRepo {
   //directly access the name key 
   //instead of obj.key 

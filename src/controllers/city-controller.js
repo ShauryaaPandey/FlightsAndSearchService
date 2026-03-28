@@ -113,7 +113,7 @@ const get =async (req,res) => {
 //making fxn all qeuries related to single one
 const getAll = async(req,resp) => {
       try {
-         const cities  = await cityService.getAllCities();
+         const cities  = await cityService.getAllCities(req.query);
          return resp.status(200).json({
               data : cities,
               success : true,

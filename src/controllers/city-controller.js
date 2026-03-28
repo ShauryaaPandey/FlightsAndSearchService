@@ -110,9 +110,31 @@ const get =async (req,res) => {
     }
 }  
 
+//making fxn all qeuries related to single one
+const getAll = async(req,resp) => {
+      try {
+         const cities  = await cityService.getAllCities();
+         return resp.status(200).json({
+              data : cities,
+              success : true,
+              message : "Successfullly fetched all cities",
+              err : {}
+        });
+      } catch (error) {
+        console.log(error);
+        return resp.status(500).json({
+             data : {},
+             success : false,
+             message: "Not able to Fetch the city",
+             err : error
+        });
+      }
+}
+
 module.exports = {
     create,
     destroy, 
     get,
-    update
+    update,
+    getAll
 }

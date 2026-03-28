@@ -10,6 +10,12 @@ const {PORT} = require('./config/serverConfig');
 
 const CityRepo = require("./repository/city-repo");
 
+// const sequelize = require('sequelize');
+
+//accessing the tables/models
+const db = require('./models/index');
+// const {City,Airport} = require('./models/index');
+
 const setupAndStartServer = async()=>{
 
     //create the express object
@@ -26,10 +32,48 @@ const setupAndStartServer = async()=>{
 
 
     //starting the app
-    app.listen(3000,()=>{
+    app.listen(PORT, async()=>{
          console.log(`Server started at ${PORT}`);
         // const repo = new CityRepo();
         // repo.createCity({name : "Sitapur"});
+
+        // const airports = await Airport.findAll({
+        //     include : [{
+        //         model : City
+        //     }]
+        // });
+        // console.log(airports);
+
+        //city k basis p airport nikalna 
+
+        // console.log(airports);
+        // db.sequelize.sync({alter: true});
+        // const city = await City.findOne({
+        //     where: {
+        //         id : 9
+        //     }
+        // });
+        // const airports = await city.getAirports();
+
+
+        //we can also add airports directly
+        //this method wrong , we cant direclty add 
+        // await city.addAirport({
+        //     name : 'Jindal Vijaynagar Airport'
+        // })
+
+        //first create then add
+        // await city.createAirport({
+        // name: 'Jindal Vijaynagar Airport'
+        // });
+
+        // const airport = await city.getAirports(); // dubara fetch
+        // console.log(airport);
+
+        
+        if(process.env.SYNC_DB){
+            db.sequelize.sync({alter: true});
+        }
     });
 }
 

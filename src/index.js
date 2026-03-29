@@ -23,8 +23,9 @@ const setupAndStartServer = async()=>{
     const app = express();
     //now we dont need to use another PORT var
     
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended:true}));
+    // ✅ built-in parsers
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
     //mapping the router object
     //any incoming req wit API , map with APIroutes

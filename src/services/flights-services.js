@@ -34,6 +34,26 @@ class FlightService {
             throw {error};
          }
      }
+
+     async getFlight(flightId){
+         try {
+            const flight = this.flightRepo.getFlight(flightId);
+            return flight;
+         } catch (error) {
+            console.log("Something went wrong in the service layer");
+            throw {error};
+         }
+     }
+
+     async updateFlight(flightId,data){
+        try {
+            const response = this.flightRepo.updateFlights(flightId,data);
+            return response;
+         } catch (error) {
+            console.log("Something went wrong in the service layer");
+            throw {error};
+         }
+     }
 }
 
 module.exports = FlightService;

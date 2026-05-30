@@ -1,49 +1,216 @@
-# Welcome to Flights Service
+# Flights & Search Service
 
-## Project Setup
-  - clone the project on your local 
-  - Execute `npm install` on the same path as your root directory of the downloaded project
-  - Create a `.env` file in the root directory and add the following environment variable 
-       - `PORT=3000`
+A backend microservice responsible for managing flights, airports, cities, and airplanes in a flight booking system. The service follows a scalable layered architecture using Controllers, Services, Repositories, and Models to provide clean and maintainable code.
 
-  - Inside the `src/config` folder , create a new file `config.json` and then add the following code :
-   
-   ```
-         {
-      "development": {
-         "username": <YOUR_NAME>,
-         "password": <YOUR_PASSWORD>,
-         "database": "Flights_Search_DB_DEV",
-         "host": "127.0.0.1",
-         "dialect": "mysql"
-      }
-      }
+## Features
 
-   ``` 
+- Flight CRUD Operations
+- Airport Management
+- City Management
+- Airplane Management
+- Flight Search APIs
+- Database Migrations & Seeders
+- Layered Architecture
+- MySQL Database Integration
+- Sequelize ORM
+- Input Validation Middleware
+- Centralized Error Handling
 
-   - Once you have added db config as listed above , go to the src folder from your terminal and execute `npx sequelize db:create`
+---
 
-   and then execute `npx sequelize db:migrate`
+## Tech Stack
 
+- Node.js
+- Express.js
+- MySQL
+- Sequelize ORM
+- Sequelize CLI
+- dotenv
 
+---
 
+## Architecture
 
-## DB design 
-  - Airplane Table 
-  - Flight Table
-  - City Table 
-  - Airport Table  
+```text
+Client
+   |
+   v
+Routes
+   |
+   v
+Controllers
+   |
+   v
+Services
+   |
+   v
+Repositories
+   |
+   v
+MySQL Database
+```
 
-  - A flight belongs to an airplane but one airplane can be used in multiple flights 
-  - A city has many airports but one airport can have one city only
-  - One airport can have many flights , but a flight belongs to one airport  
+The project follows a layered architecture to separate business logic from database operations, making the application easier to scale and maintain.
 
+---
 
+## Modules
 
+### Flight Module
 
-## Tables
+- Create Flight
+- Update Flight
+- Delete Flight
+- Get Flight Details
+- Search Flights
 
-### City -> id,name,created_at,updated_at
-### Airport -> id,name,city_id,created_at,updated_at
-     Relationship:
-     City has many airports and airport belongs to a single city(1 to M)
+### Airport Module
+
+- Create Airport
+- Update Airport
+- Delete Airport
+- Get Airport Details
+
+### City Module
+
+- Create City
+- Update City
+- Delete City
+- Get City Details
+
+### Airplane Module
+
+- Manage Airplane Information
+
+---
+
+## Database Models
+
+### City
+
+- id
+- name
+- createdAt
+- updatedAt
+
+### Airport
+
+- id
+- name
+- code
+- cityId
+
+### Airplane
+
+- id
+- modelNumber
+- capacity
+
+### Flight
+
+- id
+- flightNumber
+- airplaneId
+- departureAirportId
+- arrivalAirportId
+- departureTime
+- arrivalTime
+- price
+- totalSeats
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Configure environment variables:
+
+```env
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=flight_search_db
+```
+
+Run migrations:
+
+```bash
+npx sequelize-cli db:migrate
+```
+
+Run seeders:
+
+```bash
+npx sequelize-cli db:seed:all
+```
+
+Start server:
+
+```bash
+npm start
+```
+
+---
+
+## Project Structure
+
+```text
+src/
+│
+├── controllers/
+├── services/
+├── repository/
+├── models/
+├── routes/
+├── middleware/
+├── config/
+├── migrations/
+├── seeders/
+└── utils/
+```
+
+---
+
+## Key Concepts Implemented
+
+- REST API Development
+- Layered Architecture
+- Repository Pattern
+- Service Layer Pattern
+- Database Relationships
+- CRUD Operations
+- Database Migrations
+- Database Seeding
+- Express Middleware
+- Backend Microservices
+
+---
+
+## Future Improvements
+
+- Advanced Flight Filtering
+- Pagination
+- Sorting
+- Flight Availability Tracking
+- Seat Booking Integration
+- Redis Caching
+- API Documentation using Swagger
+- Docker Support
+
+---
+
+## Author
+
+Developed as a backend microservice for flight management and search operations within a microservices-based flight booking system.
